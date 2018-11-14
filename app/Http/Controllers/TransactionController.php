@@ -140,6 +140,13 @@ class TransactionController extends Controller
            return TransactionResource::collection($filtered);
         }
         else{
+            /*
+            $filtered = Transaction::whereHas('customer', function ($query) {
+                            $query->where('customername', 'like', '%ck%');
+                        })->paginate(5);
+
+            return TransactionResource::collection($filtered);
+            */
             $filtered = DB::table('transactions')
             ->join('customers', 'transactions.customerId', '=', 'customers.id')
             ->select('transactions.id', 'customerId','customers.customername as customer', 'amount','transactions.updated_at')
