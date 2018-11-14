@@ -25,16 +25,14 @@
                     <label for="amountId" class="control-label"> New / Edit transaction</label>
                     <div class="row">
                         <div class="col-md-4">
-                            <select class="form-control" v-model="transaction.customer_id">
-                                <option value="0">Select customer...</option>
+                            <!-- <select class="form-control"> -->
+							<select class="form-control"  v-model="transaction.customerId">
+                                <option value="0" >Select customer...</option>
 								<option v-for="customer in customers" v-bind:key="customer.id" v-bind:value="customer.id">
 									{{ customer.customername }}
 								</option>
                             </select>
-                        </div>
-                        <div class="col-md-1 form-control">
-                            <span v-model="transaction.customer">{{ transaction.customer }}</span>
-                        </div>						
+                        </div>					
                         <div class="col-md-3">
                             <input type="text" class="form-control" placeholder="0.00" v-model="transaction.amount">
                         </div>
@@ -206,7 +204,7 @@
 					})
 					.then(res => res.json())
 					.then(data => {
-						this.transaction.customer_id = '';
+						this.transaction.customerId = '';
 						this.transaction.amount = '';
 						alert('Transaction added');
 						this.fetchTransactions();
@@ -221,9 +219,11 @@
 							'content-type': 'application/json'
 						}
 					})
-					.then(res => res.json())
+					.then(
+						res => res.json()
+					)
 					.then(data => {
-						this.transaction.customer_id = '';
+						this.transaction.customerId = '';
 						this.transaction.amount = '';
 						alert('Transaction updated');
 						this.fetchTransactions();
@@ -236,9 +236,10 @@
 				this.edit = true;
 				this.transaction.id = transaction.id;
 				this.transaction.transaction_id = transaction.id;
-				this.transaction.customer_id = transaction.customer_id;
+				this.transaction.customerId = transaction.customerId;
 				this.transaction.customer = transaction.customer;
 				this.transaction.amount = transaction.amount;
+				//this.transaction.customerId = transaction.customerId;
 			},
 
 			addCustomer(){

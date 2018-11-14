@@ -47846,8 +47846,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -47958,7 +47956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}).then(function (res) {
 					return res.json();
 				}).then(function (data) {
-					_this5.transaction.customer_id = '';
+					_this5.transaction.customerId = '';
 					_this5.transaction.amount = '';
 					alert('Transaction added');
 					_this5.fetchTransactions();
@@ -47975,7 +47973,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}).then(function (res) {
 					return res.json();
 				}).then(function (data) {
-					_this5.transaction.customer_id = '';
+					_this5.transaction.customerId = '';
 					_this5.transaction.amount = '';
 					alert('Transaction updated');
 					_this5.fetchTransactions();
@@ -47988,9 +47986,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.edit = true;
 			this.transaction.id = transaction.id;
 			this.transaction.transaction_id = transaction.id;
-			this.transaction.customer_id = transaction.customer_id;
+			this.transaction.customerId = transaction.customerId;
 			this.transaction.customer = transaction.customer;
 			this.transaction.amount = transaction.amount;
+			//this.transaction.customerId = transaction.customerId;
 		},
 		addCustomer: function addCustomer() {
 			var _this6 = this;
@@ -48114,8 +48113,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.transaction.customer_id,
-                          expression: "transaction.customer_id"
+                          value: _vm.transaction.customerId,
+                          expression: "transaction.customerId"
                         }
                       ],
                       staticClass: "form-control",
@@ -48131,7 +48130,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.transaction,
-                            "customer_id",
+                            "customerId",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -48162,22 +48161,6 @@ var render = function() {
                       })
                     ],
                     2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-1 form-control" }, [
-                  _c(
-                    "span",
-                    {
-                      model: {
-                        value: _vm.transaction.customer,
-                        callback: function($$v) {
-                          _vm.$set(_vm.transaction, "customer", $$v)
-                        },
-                        expression: "transaction.customer"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.transaction.customer))]
                   )
                 ]),
                 _vm._v(" "),

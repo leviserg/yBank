@@ -59,7 +59,7 @@ class TransactionController extends Controller
         
         $transaction = $request->isMethod('put') ? Transaction::findOrFail($request->transaction_id) : new Transaction;
 
-        $transaction->customerId = $request->input('customer_id');
+        $transaction->customerId = $request->input('customerId');
         $transaction->amount = $request->input('amount');
         $transaction->created = today();
         $transaction->created_at = now();
